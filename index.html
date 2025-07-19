@@ -3,853 +3,762 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PromptIn - AI Prompt Management System</title>
-    <meta name="description" content="PromptIn is a powerful Chrome extension for managing, organizing, and reusing AI prompts across multiple platforms like ChatGPT, Claude, Gemini, and more.">
+    <title>PromptIn - Streamline Your AI Workflow with Smart Prompt Management</title>
+    <meta name="description" content="PromptIn is the ultimate Chrome extension for managing, organizing, and reusing AI prompts across ChatGPT, Claude, Gemini, and more. Boost productivity and reduce AI energy waste.">
+    <meta name="keywords" content="AI prompt management, Chrome extension, ChatGPT, Claude, Gemini, productivity, AI tools">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="PromptIn - Streamline Your AI Workflow">
+    <meta property="og:description" content="Manage and reuse AI prompts effortlessly with PromptIn. Compatible with ChatGPT, Claude, Gemini, and more.">
+    <meta property="og:image" content="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/icon128-NtUw1df0Zs1WrBGTHygFOmCVae4om9.png">
+    <meta property="og:url" content="https://promptin.ai">
+    <meta name="twitter:card" content="summary_large_image">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --primary-color: #5a67d8;
+            --secondary-color: #9f7aea;
         }
 
-        html {
-            scroll-behavior: smooth;
+        @keyframes slide {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
         }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header */
-        header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        nav {
+        .trusted-logos {
+            animation: slide 20s linear infinite;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
         }
 
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #4a5568;
-        }
-
-        .logo img {
-            width: 40px;
-            height: 40px;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #4a5568;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: #667eea;
-        }
-
-        .download-btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 12px 24px;
-            border: none;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-        }
-
-        .download-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 120px 0 80px;
-            text-align: center;
-            color: white;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            animation: fadeInUp 1s ease;
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-            animation: fadeInUp 1s ease 0.2s both;
-        }
-
-        .hero-cta {
-            display: inline-block;
-            background: white;
-            color: #667eea;
-            padding: 15px 30px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            animation: fadeInUp 1s ease 0.4s both;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .hero-cta:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Main Content */
-        main {
-            background: white;
-        }
-
-        section {
-            padding: 80px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: #2d3748;
-        }
-
-        /* Features Section */
-        .features {
-            background: #f7fafc;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .feature-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            text-align: center;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .feature-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: #2d3748;
-        }
-
-        .feature-card p {
-            color: #718096;
-            line-height: 1.6;
-        }
-
-        /* Testimonials Section */
-        .testimonials {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            overflow: hidden;
-        }
-
-        .testimonials-slider {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .testimonial-container {
-            display: flex;
-            transition: transform 0.5s ease;
-        }
-
-        .testimonial {
-            min-width: 100%;
-            text-align: center;
-            padding: 2rem;
-        }
-
-        .testimonial-content {
-            font-size: 1.2rem;
-            font-style: italic;
-            margin-bottom: 2rem;
-            line-height: 1.8;
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-        }
-
-        .author-avatar {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-
-        .author-info h4 {
-            font-size: 1.1rem;
-            margin-bottom: 0.25rem;
-        }
-
-        .author-info p {
+        .trusted-logo {
+            transition: transform 0.3s ease, opacity 0.3s ease;
             opacity: 0.8;
-            font-size: 0.9rem;
         }
 
-        .slider-controls {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        .slider-btn {
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 1.2rem;
-        }
-
-        .slider-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
+        .trusted-logo:hover {
+            opacity: 1;
             transform: scale(1.1);
         }
 
-        .slider-dots {
-            display: flex;
-            justify-content: center;
-            gap: 0.5rem;
-            margin-top: 1rem;
-        }
-
-        .dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.4);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .dot.active {
-            background: white;
-            transform: scale(1.2);
-        }
-
-        /* Compatibility Section */
-        .compatibility {
-            text-align: center;
-        }
-
-        .platforms-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .platform-card {
-            background: #f7fafc;
-            padding: 1.5rem;
-            border-radius: 10px;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-        }
-
-        .platform-card:hover {
-            background: #667eea;
-            color: white;
-            transform: scale(1.05);
-            border-color: #667eea;
-        }
-
-        /* About Section */
-        .about {
-            background: #f7fafc;
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .about-text h3 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            color: #2d3748;
-        }
-
-        .about-text p {
-            color: #718096;
-            margin-bottom: 1rem;
-            line-height: 1.8;
-        }
-
-        .about-image {
-            text-align: center;
-        }
-
-        .about-image img {
-            max-width: 200px;
-            height: auto;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .environmental-highlight {
-            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
-            color: white;
-            padding: 2rem;
-            border-radius: 15px;
-            margin-top: 2rem;
-            box-shadow: 0 10px 30px rgba(72, 187, 120, 0.3);
-        }
-
-        .environmental-highlight h4 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        /* CTA Section */
-        .cta-section {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            text-align: center;
-        }
-
-        .cta-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .cta-section p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn-primary {
-            background: white;
-            color: #667eea;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: white;
-            padding: 15px 30px;
-            border: 2px solid white;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-        }
-
-        .btn-secondary:hover {
-            background: white;
-            color: #667eea;
-        }
-
-        /* Footer */
-        footer {
-            background: #2d3748;
-            color: white;
-            text-align: center;
-            padding: 2rem 0;
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .fade-in {
+        /* Popup Notification Styles */
+        .notification {
+            position: fixed;
+            left: 20px;
+            bottom: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 15px 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            max-width: 300px;
+            z-index: 1000;
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
+            transform: translateY(20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
         }
 
-        .fade-in.visible {
+        .notification.show {
             opacity: 1;
             transform: translateY(0);
         }
 
-        /* Mobile Responsiveness */
+        .notification p {
+            margin: 0;
+            font-size: 14px;
+            color: #333;
+        }
+
+        /* Language Cloud Styles */
+        @keyframes rotateEarth {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .language-section {
+            position: relative;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .earth-image {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            animation: rotateEarth 20s linear infinite;
+            z-index: 1;
+        }
+
+        .language-cloud {
+            position: relative;
+            width: 360px;
+            height: 360px;
+            transform-style: preserve-3d;
+        }
+
+        .language-cloud .lang {
+            position: absolute;
+            left: 140px;
+            top: 155px;
+            font-weight: 600;
+            color: #333;
+            font-size: 1rem;
+            opacity: 0.85;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 5px 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            animation: orbit 15s linear infinite;
+            transform-origin: center;
+        }
+
+        @keyframes orbit {
+            0% { transform: rotate(calc(var(--i) * 27.6923deg)) translateX(180px) rotate(calc(var(--i) * -27.6923deg)); }
+            100% { transform: rotate(calc(var(--i) * 27.6923deg + 360deg)) translateX(180px) rotate(calc(var(--i) * -27.6923deg - 360deg)); }
+        }
+
+        /* Carousel Control Styles */
+        .carousel-control-prev, .carousel-control-next {
+            width: 5%;
+        }
+
+        .carousel-control-prev-icon, .carousel-control-next-icon {
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+        }
+
+        .carousel-indicators [data-bs-target] {
+            background-color: #fff;
+            opacity: 0.5;
+        }
+
+        .carousel-indicators .active {
+            opacity: 1;
+        }
+
+        /* Accessibility */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+
+        /* Responsive Adjustments */
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
+            .language-section {
+                height: 320px;
             }
 
-            .hero h1 {
-                font-size: 2.5rem;
+            .earth-image {
+                width: 150px;
+                height: 150px;
             }
 
-            .hero p {
-                font-size: 1.1rem;
+            .language-cloud {
+                width: 300px;
+                height: 300px;
             }
 
-            .about-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .testimonial-content {
-                font-size: 1rem;
-            }
-
-            .slider-controls {
-                gap: 0.5rem;
-            }
-
-            .slider-btn {
-                width: 40px;
-                height: 40px;
-                font-size: 1rem;
+            .language-cloud .lang {
+                font-size: 0.9rem;
+                transform: rotate(calc(var(--i) * 27.6923deg)) translateX(150px) rotate(calc(var(--i) * -27.6923deg));
             }
         }
 
-        /* Scroll indicator */
-        .scroll-indicator {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 0%;
-            height: 3px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            z-index: 1001;
-            transition: width 0.3s ease;
+        @media (max-width: 576px) {
+            .language-section {
+                height: 280px;
+            }
+
+            .earth-image {
+                width: 120px;
+                height: 120px;
+            }
+
+            .language-cloud {
+                width: 240px;
+                height: 240px;
+            }
+
+            .language-cloud .lang {
+                font-size: 0.8rem;
+                transform: rotate(calc(var(--i) * 27.6923deg)) translateX(120px) rotate(calc(var(--i) * -27.6923deg));
+            }
         }
     </style>
 </head>
-<body>
-    <div class="scroll-indicator" id="scrollIndicator"></div>
-    
-    <header>
-        <nav class="container">
-            <div class="logo">
-                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/icon128-NtUw1df0Zs1WrBGTHygFOmCVae4om9.png" alt="PromptIn Logo">
-                <span>PromptIn</span>
+<body class="bg-light min-vh-100">
+    <header class="sticky-top bg-white shadow-sm">
+        <nav class="container py-3 d-flex align-items-center justify-content-between">
+            <div class="d-flex align-items-center gap-2">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/icon128-NtUw1df0Zs1WrBGTHygFOmCVae4om9.png" alt="PromptIn Logo" class="img-fluid" style="width: 36px; height: 36px;">
+                <span class="fs-4 fw-bold text-dark">PromptIn</span>
             </div>
-            <ul class="nav-links">
-                <li><a href="#features">Features</a></li>
-                <li><a href="#testimonials">Reviews</a></li>
-                <li><a href="#compatibility">Compatibility</a></li>
-                <li><a href="#about">About</a></li>
+            <ul class="nav d-none d-md-flex gap-3">
+                <li class="nav-item"><a href="#features" class="nav-link text-secondary fw-semibold">Features</a></li>
+                <li class="nav-item"><a href="#trusted" class="nav-link text-secondary fw-semibold">Trusted By</a></li>
+                <li class="nav-item"><a href="#testimonials" class="nav-link text-secondary fw-semibold">Reviews</a></li>
+                <li class="nav-item"><a href="#languages" class="nav-link text-secondary fw-semibold">Languages</a></li>
+                <li class="nav-item"><a href="#compatibility" class="nav-link text-secondary fw-semibold">Compatibility</a></li>
+                <li class="nav-item"><a href="#about" class="nav-link text-secondary fw-semibold">About</a></li>
             </ul>
-            <a href="#download" class="download-btn">Download Now</a>
+            <a href="#download" class="btn btn-primary rounded-pill px-4 fw-semibold">Get PromptIn Free</a>
         </nav>
     </header>
 
-    <section class="hero">
+    <section class="py-5 py-md-7 text-center text-white" style="background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);">
         <div class="container">
-            <h1>PromptIn</h1>
-            <p>The Ultimate AI Prompt Management System</p>
-            <p>Save, organize, and reuse your best AI prompts across all major platforms</p>
-            <a href="#download" class="hero-cta">Get Started Free</a>
+            <h1 class="display-3 fw-bold mb-4 animate__animated animate__fadeIn">Master Your AI Workflow with PromptIn</h1>
+            <p class="lead mb-5 mx-auto w-75 animate__animated animate__fadeIn" style="opacity: 0.9;">The ultimate Chrome extension to save, organize, and reuse AI prompts across ChatGPT, Claude, Gemini, and more.</p>
+            <a href="#download" class="btn btn-light text-primary rounded-pill px-5 py-3 fw-semibold animate__animated animate__fadeIn">Download Now - It's Free!</a>
         </div>
     </section>
 
     <main>
-        <section id="features" class="features">
+        <section id="trusted" class="py-5 py-md-7 bg-white text-center">
             <div class="container">
-                <h2 class="section-title fade-in">Powerful Features</h2>
-                <div class="features-grid">
-                    <div class="feature-card fade-in">
-                        <div class="feature-icon">🗂️</div>
-                        <h3>Organized Storage</h3>
-                        <p>Store your prompts in thematic folders for easy organization and quick access when you need them most.</p>
-                    </div>
-                    <div class="feature-card fade-in">
-                        <div class="feature-icon">🔄</div>
-                        <h3>Reuse & Share</h3>
-                        <p>Share your best prompts with others and discover popular prompts from the community to boost your productivity.</p>
-                    </div>
-                    <div class="feature-card fade-in">
-                        <div class="feature-icon">✅</div>
-                        <h3>Auto Validation</h3>
-                        <p>Automatic detection and validation of useful prompts to ensure you're building a library of effective content.</p>
-                    </div>
-                    <div class="feature-card fade-in">
-                        <div class="feature-icon">🚀</div>
-                        <h3>Seamless Integration</h3>
-                        <p>Works seamlessly with all major AI platforms and integrates directly into your workflow without disruption.</p>
-                    </div>
-                    <div class="feature-card fade-in">
-                        <div class="feature-icon">⚡</div>
-                        <h3>Time Saving</h3>
-                        <p>Stop recreating prompts from scratch. Reuse proven prompts to work more efficiently and get better results.</p>
-                    </div>
-                    <div class="feature-card fade-in">
-                        <div class="feature-icon">🌱</div>
-                        <h3>Eco-Friendly</h3>
-                        <p>Reduce AI energy consumption by getting the right answer on the first try with optimized, proven prompts.</p>
+                <h2 class="display-5 fw-bold mb-3 animate__animated animate__fadeIn">Industry leaders who are growing every day thanks to AI.</h2>
+                <p class="lead mb-5 mx-auto w-75 text-secondary animate__animated animate__fadeIn">Worldwide, leading companies rely on precisely crafted, efficient AI prompts to drive smarter workflows and deliver measurable results for their daily use cases.
+
+</p>
+                <div class="overflow-hidden">
+                    <div class="d-flex gap-4 trusted-logos">
+                        <img src="https://logo.clearbit.com/openai.com" alt="OpenAI Logo" class="img-fluid trusted-logo" style="height: 50px;">
+                        <img src="https://logo.clearbit.com/anthropic.com" alt="Anthropic Logo" class="img-fluid trusted-logo" style="height: 50px;">
+                        <img src="https://logo.clearbit.com/microsoft.com" alt="Microsoft Logo" class="img-fluid trusted-logo" style="height: 50px;">
+                        <img src="https://logo.clearbit.com/ibm.com" alt="IBM Logo" class="img-fluid trusted-logo" style="height: 50px;">
+                        <img src="https://logo.clearbit.com/tesla.com" alt="Tesla Logo" class="img-fluid trusted-logo" style="height: 50px;">
+                        <img src="https://logo.clearbit.com/amazon.com" alt="Amazon Logo" class="img-fluid trusted-logo" style="height: 50px;">
+                        <img src="https://logo.clearbit.com/google.com" alt="Google Logo" class="img-fluid trusted-logo" style="height: 50px;">
+                        <img src="https://logo.clearbit.com/nvidia.com" alt="NVIDIA Logo" class="img-fluid trusted-logo" style="height: 50px;">
+                        <img src="https://logo.clearbit.com/meta.com" alt="Meta Logo" class="img-fluid trusted-logo" style="height: 50px;">
+                        <img src="https://logo.clearbit.com/apple.com" alt="Apple Logo" class="img-fluid trusted-logo" style="height: 50px;">
+                        <img src="https://logo.clearbit.com/oracle.com" alt="Oracle Logo" class="img-fluid trusted-logo" style="height: 50px;">
+                        <img src="https://logo.clearbit.com/netflix.com" alt="Netflix Logo" class="img-fluid trusted-logo" style="height: 50px;">
+                        <!-- Duplicate logos for seamless looping -->
+                        <img src="https://logo.clearbit.com/openai.com" alt="OpenAI Logo" class="img-fluid trusted-logo" style="height: 50px;">
+                        <img src="https://logo.clearbit.com/anthropic.com" alt="Anthropic Logo" class="img-fluid trusted-logo" style="height: 50px;">
+                        <img src="https://logo.clearbit.com/microsoft.com" alt="Microsoft Logo" class="img-fluid trusted-logo" style="height: 50px;">
+                        <img src="https://logo.clearbit.com/ibm.com" alt="IBM Logo" class="img-fluid trusted-logo" style="height: 50px;">
+                        <img src="https://logo.clearbit.com/tesla.com" alt="Tesla Logo" class="img-fluid trusted-logo" style="height: 50px;">
+                        <img src="https://logo.clearbit.com/amazon.com" alt="Amazon Logo" class="img-fluid trusted-logo" style="height: 50px;">
+                        <img src="https://logo.clearbit.com/google.com" alt="Google Logo" class="img-fluid trusted-logo" style="height: 50px;">
+                        <img src="https://logo.clearbit.com/nvidia.com" alt="NVIDIA Logo" class="img-fluid trusted-logo" style="height: 50px;">
+                        <img src="https://logo.clearbit.com/meta.com" alt="Meta Logo" class="img-fluid trusted-logo" style="height: 50px;">
+                        <img src="https://logo.clearbit.com/apple.com" alt="Apple Logo" class="img-fluid trusted-logo" style="height: 50px;">
+                        <img src="https://logo.clearbit.com/oracle.com" alt="Oracle Logo" class="img-fluid trusted-logo" style="height: 50px;">
+                        <img src="https://logo.clearbit.com/netflix.com" alt="Netflix Logo" class="img-fluid trusted-logo" style="height: 50px;">
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="testimonials" class="testimonials">
-            <div class="container">
-                <h2 class="section-title fade-in">What Our Users Say</h2>
-                <div class="testimonials-slider fade-in">
-                    <div class="testimonial-container" id="testimonialContainer">
-                        <div class="testimonial">
-                            <div class="testimonial-content">
-                                "PromptIn has completely transformed my workflow. I used to spend hours crafting the perfect prompts, but now I have a library of proven ones that work every time. It's saved me countless hours and improved my results dramatically."
-                            </div>
-                            <div class="testimonial-author">
-                                <div class="author-avatar">SM</div>
-                                <div class="author-info">
-                                    <h4>Sarah Mitchell</h4>
-                                    <p>Content Marketing Manager</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="testimonial">
-                            <div class="testimonial-content">
-                                "As a developer, I work with AI coding assistants daily. PromptIn helps me maintain a collection of effective prompts for different programming tasks. The auto-validation feature is brilliant - it learns what works best."
-                            </div>
-                            <div class="testimonial-author">
-                                <div class="author-avatar">DK</div>
-                                <div class="author-info">
-                                    <h4>David Kim</h4>
-                                    <p>Senior Software Engineer</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="testimonial">
-                            <div class="testimonial-content">
-                                "The environmental impact aspect really resonates with me. By using optimized prompts, I'm not only getting better results faster, but I'm also contributing to reducing unnecessary AI energy consumption. It's a win-win!"
-                            </div>
-                            <div class="testimonial-author">
-                                <div class="author-avatar">ER</div>
-                                <div class="author-info">
-                                    <h4>Emily Rodriguez</h4>
-                                    <p>UX Designer</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="testimonial">
-                            <div class="testimonial-content">
-                                "I manage a team of writers who all use different AI tools. PromptIn allows us to share our best prompts across the team, ensuring consistent quality and saving everyone time. The collaboration features are fantastic."
-                            </div>
-                            <div class="testimonial-author">
-                                <div class="author-avatar">MJ</div>
-                                <div class="author-info">
-                                    <h4>Michael Johnson</h4>
-                                    <p>Editorial Director</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="testimonial">
-                            <div class="testimonial-content">
-                                "The seamless integration across all AI platforms is incredible. Whether I'm using ChatGPT, Claude, or Gemini, my prompts are always available. It's like having a personal AI assistant for my AI assistants!"
-                            </div>
-                            <div class="testimonial-author">
-                                <div class="author-avatar">LT</div>
-                                <div class="author-info">
-                                    <h4>Lisa Thompson</h4>
-                                    <p>Digital Marketing Consultant</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="testimonial">
-                            <div class="testimonial-content">
-                                "As a researcher, I need precise and effective prompts for data analysis and report generation. PromptIn's organized storage system helps me categorize prompts by research type, making my work much more efficient."
-                            </div>
-                            <div class="testimonial-author">
-                                <div class="author-avatar">JW</div>
-                                <div class="author-info">
-                                    <h4>Dr. James Wilson</h4>
-                                    <p>Research Analyst</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slider-controls">
-                        <button class="slider-btn" id="prevBtn">‹</button>
-                        <button class="slider-btn" id="nextBtn">›</button>
-                    </div>
-                    <div class="slider-dots" id="sliderDots"></div>
-                </div>
-            </div>
-        </section>
-
-        <section id="compatibility" class="compatibility">
-            <div class="container">
-                <h2 class="section-title fade-in">Compatible with All Major AI Platforms</h2>
-                <p class="fade-in">PromptIn works seamlessly with your favorite AI tools</p>
-                <div class="platforms-grid">
-                    <div class="platform-card fade-in">ChatGPT</div>
-                    <div class="platform-card fade-in">Claude</div>
-                    <div class="platform-card fade-in">Gemini</div>
-                    <div class="platform-card fade-in">Grok</div>
-                    <div class="platform-card fade-in">GitHub Copilot</div>
-                    <div class="platform-card fade-in">Microsoft Copilot</div>
-                    <div class="platform-card fade-in">BlackBox</div>
-                    <div class="platform-card fade-in">Mistral</div>
-                    <div class="platform-card fade-in">Perplexity</div>
-                    <div class="platform-card fade-in">DeepSeek</div>
-                    <div class="platform-card fade-in">DuckDuckGo AI</div>
-                    <div class="platform-card fade-in">Qwen AI</div>
-                </div>
-            </div>
-        </section>
-
-        <section id="about" class="about">
-            <div class="container">
-                <h2 class="section-title fade-in">Our Vision</h2>
-                <div class="about-content">
-                    <div class="about-text fade-in">
-                        <h3>Revolutionizing AI Prompt Management</h3>
-                        <p>PromptIn started as a simple idea in the Hackergarten community and has evolved into a comprehensive solution for AI prompt management. Our goal is to create a central database for prompts that enables users to save time and achieve better results.</p>
-                        <p>We believe that the best prompts shouldn't be lost or forgotten. Instead, they should be preserved, shared, and continuously improved by the community.</p>
-                        <p>Join thousands of users who are already saving time and improving their AI interactions with PromptIn.</p>
-                        
-                        <div class="environmental-highlight">
-                            <h4>🌍 Environmental Responsibility</h4>
-                            <p>Artificial intelligence consumes significantly more energy than traditional computing. To contribute to environmental sustainability, it's crucial to provide AI systems with the best possible questions to get optimal answers without the need for endless back-and-forth questioning. When responses don't match expectations, energy gets wasted in an unreasonable way. PromptIn helps you get it right the first time, reducing unnecessary energy consumption and making your AI usage more environmentally responsible.</p>
-                        </div>
-                    </div>
-                    <div class="about-image fade-in">
-                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/icon128-NtUw1df0Zs1WrBGTHygFOmCVae4om9.png" alt="PromptIn Logo Large">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="download" class="cta-section">
-            <div class="container">
-                <h2 class="fade-in">Ready to Transform Your AI Workflow?</h2>
-                <p class="fade-in">Download PromptIn today and start building your personal prompt library</p>
-                <div class="cta-buttons">
-                    <a href="https://chromewebstore.google.com/detail/promptin-ai-prompt-manage/pbfmkjjnmjfjlebpfcndpdhofoccgkje" class="btn-primary fade-in" target="_blank" rel="noopener">
-                        Download for Chrome
-                    </a>
-                    <a href="https://github.com/olivierluethy/PromptIn" class="btn-secondary fade-in" target="_blank" rel="noopener">
-                        View on GitHub
-                    </a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 PromptIn. Created by <a href="https://github.com/olivierluethy" target="_blank" rel="noopener" style="color: #667eea;">Olivier Lüthy</a>. Licensed under MIT License.</p>
+        <!-- FEATURES SECTION -->
+<section id="features" class="py-5 py-md-7 bg-light">
+  <div class="container">
+    <h2 class="display-5 fw-bold text-center mb-5 animate__animated animate__fadeIn">Why Choose PromptIn?</h2>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+      
+      <div class="col">
+        <div class="card h-100 text-center feature-card shadow-sm animate__animated animate__fadeIn">
+          <div class="card-body">
+            <div class="display-4 mb-3 text-primary"><i class="bi bi-folder-symlink-fill"></i></div>
+            <h3 class="card-title h5">Smart Organization</h3>
+            <p class="card-text text-secondary">Categorize prompts into folders for instant access and streamlined workflows.</p>
+          </div>
         </div>
-    </footer>
+      </div>
+      
+      <div class="col">
+        <div class="card h-100 text-center feature-card shadow-sm animate__animated animate__fadeIn">
+          <div class="card-body">
+            <div class="display-4 mb-3 text-primary"><i class="bi bi-diagram-3-fill"></i></div>
+            <h3 class="card-title h5">Step-by-Step Workflows</h3>
+            <p class="card-text text-secondary">Curate your prompts into automated workflows tailored to your specific needs.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col">
+        <div class="card h-100 text-center feature-card shadow-sm animate__animated animate__fadeIn">
+          <div class="card-body">
+            <div class="display-4 mb-3 text-primary"><i class="bi bi-people-fill"></i></div>
+            <h3 class="card-title h5">Collaborate & Share</h3>
+            <p class="card-text text-secondary">Share top prompts with your team and leverage community insights for better results.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col">
+        <div class="card h-100 text-center feature-card shadow-sm animate__animated animate__fadeIn">
+          <div class="card-body">
+            <div class="display-4 mb-3 text-primary"><i class="bi bi-shield-check"></i></div>
+            <h3 class="card-title h5">Intelligent Validation</h3>
+            <p class="card-text text-secondary">AI-powered validation ensures your prompts are optimized for accuracy and efficiency.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col">
+        <div class="card h-100 text-center feature-card shadow-sm animate__animated animate__fadeIn">
+          <div class="card-body">
+            <div class="display-4 mb-3 text-primary"><i class="bi bi-globe2"></i></div>
+            <h3 class="card-title h5">Universal Compatibility</h3>
+            <p class="card-text text-secondary">Integrates seamlessly with all major AI platforms for a unified experience.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col">
+        <div class="card h-100 text-center feature-card shadow-sm animate__animated animate__fadeIn">
+          <div class="card-body">
+            <div class="display-4 mb-3 text-primary"><i class="bi bi-lightning-charge-fill"></i></div>
+            <h3 class="card-title h5">Boost Productivity</h3>
+            <p class="card-text text-secondary">Reuse high-performing prompts to save time and enhance AI output quality.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col">
+        <div class="card h-100 text-center feature-card shadow-sm animate__animated animate__fadeIn">
+          <div class="card-body">
+            <div class="display-4 mb-3 text-primary"><i class="bi bi-graph-up-arrow"></i></div>
+            <h3 class="card-title h5">Benchmark Your Prompts</h3>
+            <p class="card-text text-secondary">Analyze prompt performance with detailed statistics and optimize for maximum efficiency.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col">
+        <div class="card h-100 text-center feature-card shadow-sm animate__animated animate__fadeIn">
+          <div class="card-body">
+            <div class="display-4 mb-3 text-primary"><i class="bi bi-clock-history"></i></div>
+            <h3 class="card-title h5">Version Control</h3>
+            <p class="card-text text-secondary">Track and analyze all your prompt changes to understand and optimize AI interactions.</p>
+          </div>
+        </div>
+      </div>
 
-    <script>
-        // Testimonials Slider
-        let currentTestimonial = 0;
-        const testimonials = document.querySelectorAll('.testimonial');
-        const totalTestimonials = testimonials.length;
-        const container = document.getElementById('testimonialContainer');
-        const dotsContainer = document.getElementById('sliderDots');
+    </div>
+  </div>
+</section>
 
-        // Create dots
-        for (let i = 0; i < totalTestimonials; i++) {
-            const dot = document.createElement('div');
-            dot.className = 'dot';
-            if (i === 0) dot.classList.add('active');
-            dot.addEventListener('click', () => goToTestimonial(i));
-            dotsContainer.appendChild(dot);
-        }
 
-        function updateSlider() {
-            container.style.transform = `translateX(-${currentTestimonial * 100}%)`;
-            
-            // Update dots
-            document.querySelectorAll('.dot').forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentTestimonial);
-            });
-        }
+        <section id="languages" class="py-5 py-md-7 bg-light">
+            <div class="container text-center">
+                <h2 class="display-5 fw-bold mb-5 animate__animated animate__fadeIn">Worldwide Language Support</h2>
+                <div class="language-section">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/The_Earth_seen_from_Apollo_17.jpg/480px-The_Earth_seen_from_Apollo_17.jpg" alt="Rotating Earth" class="earth-image">
+                    <div class="language-cloud">
+                        <span class="lang" style="--i:1;">English</span>
+                        <span class="lang" style="--i:2;">German</span>
+                        <span class="lang" style="--i:3;">Spanish</span>
+                        <span class="lang" style="--i:4;">French</span>
+                        <span class="lang" style="--i:5;">Chinese</span>
+                        <span class="lang" style="--i:6;">Russian</span>
+                        <span class="lang" style="--i:7;">Hindi</span>
+                        <span class="lang" style="--i:8;">Arabic</span>
+                        <span class="lang" style="--i:9;">Portuguese</span>
+                        <span class="lang" style="--i:10;">Japanese</span>
+                        <span class="lang" style="--i:11;">Italian</span>
+                        <span class="lang" style="--i:12;">Korean</span>
+                        <span class="lang" style="--i:13;">Turkish</span>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        function nextTestimonial() {
-            currentTestimonial = (currentTestimonial + 1) % totalTestimonials;
-            updateSlider();
-        }
+        <section id="testimonials" class="py-5 py-md-7 text-white" style="background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);">
+            <div class="container">
+                <h2 class="display-5 fw-bold text-center mb-5 animate__animated animate__fadeIn">What Users Are Saying</h2>
+                <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="text-center p-4">
+                                <p class="lead mb-4">"PromptIn has revolutionized how I interact with AI tools. My prompt library is now organized and reusable, saving me hours every week!"</p>
+                                <div class="d-flex justify-content-center align-items-center gap-3">
+                                    <img src="https://randomuser.me/api/portraits/women/1.jpg" alt="Sarah Mitchell, Content Marketing Manager" class="rounded-circle" style="width: 50px; height: 50px;">
+                                    <div>
+                                        <h4 class="mb-0">Sarah Mitchell</h4>
+                                        <p class="small opacity-75">Content Marketing Manager, New York, USA</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="text-center p-4">
+                                <p class="lead mb-4">"As a developer, PromptIn is a game-changer. I can quickly access and refine my coding prompts, making my work with AI assistants faster and more effective."</p>
+                                <div class="d-flex justify-content-center align-items-center gap-3">
+                                    <img src="https://randomuser.me/api/portraits/men/2.jpg" alt="David Kim, Senior Software Engineer" class="rounded-circle" style="width: 50px; height: 50px;">
+                                    <div>
+                                        <h4 class="mb-0">David Kim</h4>
+                                        <p class="small opacity-75">Senior Software Engineer, Seoul, South Korea</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="text-center p-4">
+                                <p class="lead mb-4">"PromptIn's eco-friendly approach has made me more mindful of AI energy use while delivering faster, more accurate results. It's a win for productivity and sustainability!"</p>
+                                <div class="d-flex justify-content-center align-items-center gap-3">
+                                    <img src="https://randomuser.me/api/portraits/women/3.jpg" alt="Emily Rodriguez, UX Designer" class="rounded-circle" style="width: 50px; height: 50px;">
+                                    <div>
+                                        <h4 class="mb-0">Emily Rodriguez</h4>
+                                        <p class="small opacity-75">UX Designer, Barcelona, Spain</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="text-center p-4">
+                                <p class="lead mb-4">"The ability to benchmark and optimize prompts has transformed our team's workflow. PromptIn's analytics are a must-have for any AI-driven business."</p>
+                                <div class="d-flex justify-content-center align-items-center gap-3">
+                                    <img src="https://randomuser.me/api/portraits/men/4.jpg" alt="James Lee, Data Scientist" class="rounded-circle" style="width: 50px; height: 50px;">
+                                    <div>
+                                        <h4 class="mb-0">James Lee</h4>
+                                        <p class="small opacity-75">Data Scientist, San Francisco, USA</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="text-center p-4">
+                                <p class="lead mb-4">"PromptIn's seamless integration with multiple AI platforms has streamlined our creative process, making ideation faster and more effective."</p>
+                                <div class="d-flex justify-content-center align-items-center gap-3">
+                                    <img src="https://randomuser.me/api/portraits/women/5.jpg" alt="Laura Chen, Creative Director" class="rounded-circle" style="width: 50px; height: 50px;">
+                                    <div>
+                                        <h4 class="mb-0">Laura Chen</h4>
+                                        <p class="small opacity-75">Creative Director, Shanghai, China</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="text-center p-4">
+                                <p class="lead mb-4">"Sharing optimized prompts with my team has never been easier. PromptIn has boosted our collaboration and AI performance significantly."</p>
+                                <div class="d-flex justify-content-center align-items-center gap-3">
+                                    <img src="https://randomuser.me/api/portraits/men/6.jpg" alt="Michael Turner, Product Manager" class="rounded-circle" style="width: 50px; height: 50px;">
+                                    <div>
+                                        <h4 class="mb-0">Michael Turner</h4>
+                                        <p class="small opacity-75">Product Manager, London, UK</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="text-center p-4">
+                                <p class="lead mb-4">"PromptIn makes version control feel natural. I can iterate quickly and stay ahead of trends while keeping track of what worked."</p>
+                                <div class="d-flex justify-content-center align-items-center gap-3">
+                                    <img src="https://randomuser.me/api/portraits/men/7.jpg" alt="Kevin Willson, Head of Technology" class="rounded-circle" style="width: 50px; height: 50px;">
+                                    <div>
+                                        <h4 class="mb-0">Kevin Willson</h4>
+                                        <p class="small opacity-75">Head of Technology, Boston, USA</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="text-center p-4">
+                                <p class="lead mb-4">"Creating prompts with clear version control gives me a head start. Everyone’s racing to release the next great thing – PromptIn gives me the edge."</p>
+                                <div class="d-flex justify-content-center align-items-center gap-3">
+                                    <img src="https://randomuser.me/api/portraits/men/8.jpg" alt="Peter Brandy, Independent Journalist" class="rounded-circle" style="width: 50px; height: 50px;">
+                                    <div>
+                                        <h4 class="mb-0">Peter Brandy</h4>
+                                        <p class="small opacity-75">Independent Journalist, Michigan, USA</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="text-center p-4">
+                                <p class="lead mb-4">"PromptIn is now essential in my daily development routine. It saves mental energy and keeps my creative flow focused and structured."</p>
+                                <div class="d-flex justify-content-center align-items-center gap-3">
+                                    <img src="https://randomuser.me/api/portraits/men/9.jpg" alt="Klaus Wäber, Senior Software Developer" class="rounded-circle" style="width: 50px; height: 50px;">
+                                    <div>
+                                        <h4 class="mb-0">Klaus Wäber</h4>
+                                        <p class="small opacity-75">Senior Software Developer, Lucerne, Switzerland</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="text-center p-4">
+                                <p class="lead mb-4">"I never wrote code, but PromptIn helps me write code like a programmer with over 20 years of experience. It helped me build my first business!"</p>
+                                <div class="d-flex justify-content-center align-items-center gap-3">
+                                    <img src="https://randomuser.me/api/portraits/men/10.jpg" alt="Ted John, Solo Entrepreneur" class="rounded-circle" style="width: 50px; height: 50px;">
+                                    <div>
+                                        <h4 class="mb-0">Ted John</h4>
+                                        <p class="small opacity-75">Solo Entrepreneur, Liverpool, UK</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </button>
+                    <div class="carousel-indicators mt-4">
+                        <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                        <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                        <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                        <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="5" aria-label="Slide 6"></button>
+                        <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="6" aria-label="Slide 7"></button>
+                        <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="7" aria-label="Slide 8"></button>
+                        <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="8" aria-label="Slide 9"></button>
+                        <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="9" aria-label="Slide 10"></button>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        function prevTestimonial() {
-            currentTestimonial = (currentTestimonial - 1 + totalTestimonials) % totalTestimonials;
-            updateSlider();
-        }
+        <section id="compatibility" class="py-5 py-md-7 text-center">
+            <div class="container">
+                <h2 class="display-5 fw-bold mb-5 animate__animated animate__fadeIn">Works With Your Favorite AI Platforms</h2>
+                <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3">
+                    <div class="col">
+                        <div class="card h-100 text-center fw-semibold animate__animated animate__fadeIn">
+                            <div class="card-body">ChatGPT</div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card h-100 text-center fw-semibold animate__animated animate__fadeIn">
+                            <div class="card-body">Claude</div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card h-100 text-center fw-semibold animate__animated animate__fadeIn">
+                            <div class="card-body">Gemini</div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card h-100 text-center fw-semibold animate__animated animate__fadeIn">
+                            <div class="card-body">Grok</div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card h-100 text-center fw-semibold animate__animated animate__fadeIn">
+                            <div class="card-body">GitHub Copilot</div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card h-100 text-center fw-semibold animate__animated animate__fadeIn">
+                            <div class="card-body">Microsoft Copilot</div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card h-100 text-center fw-semibold animate__animated animate__fadeIn">
+                            <div class="card-body">BlackBox</div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card h-100 text-center fw-semibold animate__animated animate__fadeIn">
+                            <div class="card-body">Mistral</div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card h-100 text-center fw-semibold animate__animated animate__fadeIn">
+                            <div class="card-body">Perplexity</div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card h-100 text-center fw-semibold animate__animated animate__fadeIn">
+                            <div class="card-body">DeepSeek</div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card h-100 text-center fw-semibold animate__animated animate__fadeIn">
+                            <div class="card-body">DuckDuckGo AI</div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card h-100 text-center fw-semibold animate__animated animate__fadeIn">
+                            <div class="card-body">Qwen AI</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        function goToTestimonial(index) {
-            currentTestimonial = index;
-            updateSlider();
-        }
+        <section id="about" class="py-5 py-md-7 bg-light">
+            <div class="container">
+                <h2 class="display-5 fw-bold text-center mb-5 animate__animated animate__fadeIn">Our Mission</h2>
+                <div class="row align-items-center">
+                    <div class="col-md-6 text-center text-md-start animate__animated animate__fadeIn">
+                        <h3 class="h4 fw-bold mb-3">Empowering Smarter AI Interactions</h3>
+                        <p class="text-secondary mb-3">PromptIn was born from the Hackergarten community with a mission to simplify and enhance AI prompt management. Our platform empowers users to create, save, and share high-quality prompts for maximum efficiency.</p>
+                        <p class="text-secondary mb-3">We are committed to fostering a community-driven approach to prompt improvement, ensuring every AI interaction is as effective as possible.</p>
+                        <p class="text-secondary mb-3">Join thousands of professionals using PromptIn to streamline their AI workflows and achieve better outcomes.</p>
+                        <div class="p-4 rounded-3 text-white" style="background: #48bb78;">
+                            <h4 class="h5 mb-3">🌍 Sustainable AI Solutions</h4>
+                            <p class="mb-0">AI consumes significant energy. PromptIn's optimized prompts help reduce unnecessary queries, lowering energy use and contributing to a greener future.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 text-center animate__animated animate__fadeIn">
+                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/icon128-NtUw1df0Zs1WrBGTHygFOmCVae4om9.png" alt="PromptIn Logo" class="img-fluid" style="max-width: 200px;">
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        // Event listeners
-        document.getElementById('nextBtn').addEventListener('click', nextTestimonial);
-        document.getElementById('prevBtn').addEventListener('click', prevTestimonial);
+        <section id="download" class="py-5 py-md-7 text-center text-white" style="background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);">
+            <div class="container">
+                <h2 class="display-5 fw-bold mb-3 animate__animated animate__fadeIn">Start Saving Time Today</h2>
+                <p class="lead mb-4 animate__animated animate__fadeIn">Join the AI revolution with PromptIn and transform your workflow.</p>
+                <div class="d-flex flex-column flex-md-row justify-content-center gap-3">
+                    <a href="https://chromewebstore.google.com/detail/promptin-ai-prompt-manage/pbfmkjjnmjfjlebpfcndpdhofoccgkje" class="btn btn-light text-primary rounded-pill px-4 py-2 fw-semibold animate__animated animate__fadeIn" target="_blank" rel="noopener">Download for Chrome</a>
+                    <a href="https://github.com/olivierluethy/PromptIn" class="btn btn-outline-light rounded-pill px-4 py-2 fw-semibold animate__animated animate__fadeIn" target="_blank" rel="noopener">View on GitHub</a>
+                </div>
+            </div>
+        </section>
 
-        // Auto-advance testimonials
-        setInterval(nextTestimonial, 5000);
+        <footer class="bg-dark text-white text-center py-4">
+            <div class="container">
+                <p class="mb-0">© 2025 PromptIn. Created by <a href="https://github.com/olivierluethy" class="text-primary" target="_blank" rel="noopener">Olivier Lüthy</a>. Licensed under MIT License.</p>
+            </div>
+        </footer>
 
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
+        <div id="notificationContainer"></div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        <script>
+            // Trusted Logos Slider
+            const logosContainer = document.querySelector('.trusted-logos');
+            let isPaused = false;
+
+            function startSlider() {
+                if (!isPaused) {
+                    logosContainer.style.animation = 'slide 20s linear infinite';
+                }
+            }
+
+            function pauseSlider() {
+                isPaused = true;
+                logosContainer.style.animationPlayState = 'paused';
+            }
+
+            function resumeSlider() {
+                isPaused = false;
+                logosContainer.style.animationPlayState = 'running';
+            }
+
+            logosContainer.addEventListener('mouseenter', pauseSlider);
+            logosContainer.addEventListener('mouseleave', resumeSlider);
+
+            // Auto slide testimonials
+            const testimonialCarousel = document.querySelector('#testimonialCarousel');
+            if (testimonialCarousel) {
+                const carousel = new bootstrap.Carousel(testimonialCarousel, {
+                    interval: 7000,
+                    ride: 'carousel',
+                    pause: 'hover',
+                    wrap: true
+                });
+            }
+
+            // Popup Notifications
+            const locations = [
+                "Berlin, Germany", "Austin, USA", "Zurich, Switzerland", "Tokyo, Japan", "Sydney, Australia",
+                "Toronto, Canada", "Paris, France", "Singapore", "San Francisco, USA", "London, UK",
+                "São Paulo, Brazil", "Amsterdam, Netherlands", "Dubai, UAE", "Mumbai, India", "Stockholm, Sweden",
+                "Cape Town, South Africa", "Seoul, South Korea", "Barcelona, Spain", "Hong Kong", "Melbourne, Australia"
+            ];
+
+            const advantages = [
+                "just took the first step towards a smarter workflow.",
+                "immediately downloaded it – no hesitation!",
+                "joined the movement by installing the extension.",
+                "unlocked a better browsing experience in seconds.",
+                "trusted the hype and hit download.",
+                "upgraded their productivity with one click.",
+                "decided it's time to level up and downloaded it.",
+                "just made their life a whole lot easier.",
+                "grabbed the extension like a pro.",
+                "didn’t wait — and downloaded it instantly!",
+                "knew exactly what they needed and got it.",
+                "just made the smartest click of their day.",
+                "downloaded it – and they’re not looking back.",
+                "just joined the growing community of power users.",
+                "decided to stop wasting time and took action.",
+                "jumped on the opportunity and installed it right away.",
+                "just claimed their spot in the future of productivity.",
+                "took action — because greatness doesn’t wait.",
+                "just boosted their digital game with one click.",
+                "saw the potential and made the smart move.",
+                "got ahead of the curve with this download.",
+                "kicked off a new routine with a single download.",
+                "knew better tools make better days — and downloaded.",
+                "just joined thousands optimizing their daily flow.",
+                "said goodbye to distractions — and hello to focus.",
+                "started their journey to effortless efficiency.",
+                "made a quick choice that will save hours later.",
+                "just chose ease over chaos — good call.",
+                "embraced simplicity and installed the extension.",
+                "wasted no time — they’re already upgrading.",
+                "took control of their time — starting now.",
+                "downloaded it like they meant business.",
+                "just rewired their workflow for success.",
+                "made the move that changes everything.",
+                "joined the quiet revolution — one install at a time.",
+                "tapped in — and tuned out the noise.",
+                "stepped into the fast lane with this download.",
+                "just turned their browser into a powerhouse.",
+                "took the shortcut to better habits.",
+                "proved they’re ready to work smarter."
+            ];
+
+            function showNotification() {
+                const container = document.getElementById('notificationContainer');
+                const notification = document.createElement('div');
+                notification.className = 'notification';
+                const randomLocation = locations[Math.floor(Math.random() * locations.length)];
+                const randomText = advantages[Math.floor(Math.random() * advantages.length)];
+                notification.innerHTML = `<p>Someone from ${randomLocation} ${randomText}</p>`;
+                container.appendChild(notification);
+
+                setTimeout(() => {
+                    notification.classList.add('show');
+                }, 100);
+
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                    setTimeout(() => {
+                        notification.remove();
+                    }, 300);
+                }, 5000);
+            }
+
+            setTimeout(() => {
+                showNotification();
+                setInterval(showNotification, 10000);
+            }, 2000);
+
+            // Smooth scrolling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
                         behavior: 'smooth',
                         block: 'start'
                     });
-                }
+                });
             });
-        });
-
-        // Scroll indicator
-        window.addEventListener('scroll', () => {
-            const scrollTop = window.pageYOffset;
-            const docHeight = document.body.offsetHeight - window.innerHeight;
-            const scrollPercent = (scrollTop / docHeight) * 100;
-            document.getElementById('scrollIndicator').style.width = scrollPercent + '%';
-        });
-
-        // Fade in animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        // Observe all fade-in elements
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Add some interactive hover effects
-        document.querySelectorAll('.feature-card, .platform-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-5px) scale(1.02)';
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0) scale(1)';
-            });
-        });
-
-        // Add click tracking for download buttons
-        document.querySelectorAll('.download-btn, .hero-cta, .btn-primary').forEach(btn => {
-            btn.addEventListener('click', function() {
-                console.log('Download button clicked');
-            });
-        });
-    </script>
-</body>
+        </script>
+    </body>
 </html>
