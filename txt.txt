@@ -1,0 +1,149 @@
+// Trusted Logos Slider
+const logosContainer = document.querySelector(".trusted-logos");
+let isPaused = false;
+
+function startSlider() {
+  if (!isPaused) {
+    logosContainer.style.animation = "slide 20s linear infinite";
+  }
+}
+
+function pauseSlider() {
+  isPaused = true;
+  logosContainer.style.animationPlayState = "paused";
+}
+
+function resumeSlider() {
+  isPaused = false;
+  logosContainer.style.animationPlayState = "running";
+}
+
+logosContainer.addEventListener("mouseenter", pauseSlider);
+logosContainer.addEventListener("mouseleave", resumeSlider);
+
+// Auto slide testimonials
+const testimonialCarousel = document.querySelector("#testimonialCarousel");
+if (testimonialCarousel) {
+  const carousel = new bootstrap.Carousel(testimonialCarousel, {
+    interval: 7000,
+    ride: "carousel",
+    pause: "hover",
+    wrap: true,
+  });
+}
+
+// Popup Notifications
+const locations = [
+  "Berlin, Germany",
+  "Austin, USA",
+  "Zurich, Switzerland",
+  "Tokyo, Japan",
+  "Sydney, Australia",
+  "Toronto, Canada",
+  "Paris, France",
+  "Singapore",
+  "San Francisco, USA",
+  "London, UK",
+  "São Paulo, Brazil",
+  "Amsterdam, Netherlands",
+  "Dubai, UAE",
+  "Mumbai, India",
+  "Stockholm, Sweden",
+  "Cape Town, South Africa",
+  "Seoul, South Korea",
+  "Barcelona, Spain",
+  "Hong Kong",
+  "Melbourne, Australia",
+];
+
+const advantages = [
+  "just took the first step towards a smarter workflow.",
+  "immediately downloaded it – no hesitation!",
+  "joined the movement by installing the extension.",
+  "unlocked a better browsing experience in seconds.",
+  "trusted the hype and hit download.",
+  "upgraded their productivity with one click.",
+  "decided it's time to level up and downloaded it.",
+  "just made their life a whole lot easier.",
+  "grabbed the extension like a pro.",
+  "didn’t wait — and downloaded it instantly!",
+  "knew exactly what they needed and got it.",
+  "just made the smartest click of their day.",
+  "downloaded it – and they’re not looking back.",
+  "just joined the growing community of power users.",
+  "decided to stop wasting time and took action.",
+  "jumped on the opportunity and installed it right away.",
+  "just claimed their spot in the future of productivity.",
+  "took action — because greatness doesn’t wait.",
+  "just boosted their digital game with one click.",
+  "saw the potential and made the smart move.",
+  "got ahead of the curve with this download.",
+  "kicked off a new routine with a single download.",
+  "knew better tools make better days — and downloaded.",
+  "just joined thousands optimizing their daily flow.",
+  "said goodbye to distractions — and hello to focus.",
+  "started their journey to effortless efficiency.",
+  "made a quick choice that will save hours later.",
+  "just chose ease over chaos — good call.",
+  "embraced simplicity and installed the extension.",
+  "wasted no time — they’re already upgrading.",
+  "took control of their time — starting now.",
+  "downloaded it like they meant business.",
+  "just rewired their workflow for success.",
+  "made the move that changes everything.",
+  "joined the quiet revolution — one install at a time.",
+  "tapped in — and tuned out the noise.",
+  "stepped into the fast lane with this download.",
+  "just turned their browser into a powerhouse.",
+  "took the shortcut to better habits.",
+  "proved they’re ready to work smarter.",
+];
+
+const times = [
+  "2h ago",
+  "5h ago",
+  "10h ago",
+  "15h ago",
+  "a day ago",
+  "2 days ago",
+  "a week ago",
+];
+
+function showNotification() {
+  const container = document.getElementById("notificationContainer");
+  const notification = document.createElement("div");
+  notification.className = "notification";
+  const randomLocation =
+    locations[Math.floor(Math.random() * locations.length)];
+  const randomText = advantages[Math.floor(Math.random() * advantages.length)];
+  const timeRange = times[Math.floor(Math.random() * times.length)];
+  notification.innerHTML = `<p>Someone from ${randomLocation} ${randomText}</p> ${timeRange}`;
+  container.appendChild(notification);
+
+  setTimeout(() => {
+    notification.classList.add("show");
+  }, 100);
+
+  setTimeout(() => {
+    notification.classList.remove("show");
+    setTimeout(() => {
+      notification.remove();
+    }, 300);
+  }, 5000);
+}
+
+setTimeout(() => {
+  showNotification();
+  setInterval(showNotification, 10000);
+}, 2000);
+
+// Smooth scrolling
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+  anchor.addEventListener("click", function (e) {
+    e.preventDefault();
+    document.querySelector(this.getAttribute("href")).scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  });
+});

@@ -10,12 +10,12 @@
     <meta property="og:title" content="PromptIn - Streamline Your AI Workflow">
     <meta property="og:description" content="Manage and reuse AI prompts effortlessly with PromptIn. Compatible with ChatGPT, Claude, Gemini, and more.">
     <meta property="og:image" content="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/icon128-NtUw1df0Zs1WrBGTHygFOmCVae4om9.png">
-    <meta property="og:url" content="https://promptin.ai">
+    <meta property="og:url" content="https://prompt-in.com">
     <meta name="twitter:card" content="summary_large_image">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <script src="script.js" defer></script>
     <style>
         :root {
             --primary-color: #5a67d8;
@@ -212,17 +212,68 @@
                 <li class="nav-item"><a href="#compatibility" class="nav-link text-secondary fw-semibold">Compatibility</a></li>
                 <li class="nav-item"><a href="#about" class="nav-link text-secondary fw-semibold">About</a></li>
             </ul>
-            <a href="#download" class="btn btn-primary rounded-pill px-4 fw-semibold">Get PromptIn Free</a>
+            <a href="https://chromewebstore.google.com/detail/PromptIn:%20AI%20Prompt%20Management%20System/pbfmkjjnmjfjlebpfcndpdhofoccgkje" class="btn btn-primary rounded-pill px-4 fw-semibold"><img src="https://cdn.jsdelivr.net/gh/alrra/browser-logos/src/chrome/chrome.svg" alt="Chrome logo" width="20" height="20">Add to Chrome / <img src="https://cdn.jsdelivr.net/gh/alrra/browser-logos/src/edge/edge.svg" alt="Chrome logo" width="20" height="20">Edge</a>
         </nav>
     </header>
 
     <section class="py-5 py-md-7 text-center text-white" style="background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);">
-        <div class="container">
-            <h1 class="display-3 fw-bold mb-4 animate__animated animate__fadeIn">Master Your AI Workflow with PromptIn</h1>
-            <p class="lead mb-5 mx-auto w-75 animate__animated animate__fadeIn" style="opacity: 0.9;">The ultimate Chrome extension to save, organize, and reuse AI prompts across ChatGPT, Claude, Gemini, and more.</p>
-            <a href="#download" class="btn btn-light text-primary rounded-pill px-5 py-3 fw-semibold animate__animated animate__fadeIn">Download Now - It's Free!</a>
+  <div class="container">
+    <h1 class="display-3 fw-bold mb-4 animate__animated animate__fadeIn">Master Your AI Workflow with PromptIn</h1>
+    <p class="lead mb-4 mx-auto w-75 animate__animated animate__fadeIn" style="opacity: 0.9;">
+      The ultimate Chrome extension to save, organize, and reuse AI prompts across ChatGPT, Claude, Gemini, and more.
+    </p>
+
+    <!-- Buttons -->
+    <div class="d-flex flex-column flex-md-row justify-content-center gap-3 mb-5">
+      <a href="https://chromewebstore.google.com/detail/promptin-ai-prompt-manage/pbfmkjjnmjfjlebpfcndpdhofoccgkje" 
+         class="btn btn-light text-primary rounded-pill px-4 py-2 fw-semibold d-flex align-items-center gap-2 animate__animated animate__fadeIn" 
+         target="_blank" rel="noopener">
+        <img src="https://cdn.jsdelivr.net/gh/alrra/browser-logos/src/chrome/chrome.svg" alt="Chrome logo" width="20" height="20">
+        Add to Chrome
+      </a>
+
+      <a href="https://chromewebstore.google.com/detail/promptin-ai-prompt-manage/pbfmkjjnmjfjlebpfcndpdhofoccgkje" 
+         class="btn btn-light text-primary rounded-pill px-4 py-2 fw-semibold d-flex align-items-center gap-2 animate__animated animate__fadeIn" 
+         target="_blank" rel="noopener">
+        <img src="https://cdn.jsdelivr.net/gh/alrra/browser-logos/src/edge/edge.svg" alt="Edge logo" width="20" height="20">
+        Add to Edge
+      </a>
+
+      <a
+         class="btn btn-light text-primary rounded-pill px-4 py-2 fw-semibold d-flex align-items-center gap-2 animate__animated animate__fadeIn disabled" 
+         tabindex="-1" aria-disabled="true">
+        <img src="https://cdn.jsdelivr.net/gh/alrra/browser-logos/src/firefox/firefox.svg" alt="Firefox logo" width="20" height="20">
+        Add to Firefox <small class="text-muted ms-1">(Coming soon)</small>
+      </a>
+    </div>
+
+    <!-- Reviews block -->
+    <div class="d-flex flex-column flex-md-row align-items-center justify-content-center gap-4">
+      <!-- Profile images -->
+      <div class="d-flex">
+        <img src="https://randomuser.me/api/portraits/men/11.jpg" class="rounded-circle me-n2 border border-white" style="width: 48px; height: 48px; z-index: 5;" alt="User 1">
+        <img src="https://randomuser.me/api/portraits/women/1.jpg" class="rounded-circle me-n2 border border-white" style="width: 48px; height: 48px; z-index: 4;" alt="User 2">
+        <img src="https://randomuser.me/api/portraits/men/2.jpg" class="rounded-circle me-n2 border border-white" style="width: 48px; height: 48px; z-index: 3;" alt="User 3">
+        <img src="https://randomuser.me/api/portraits/women/3.jpg" class="rounded-circle me-n2 border border-white" style="width: 48px; height: 48px; z-index: 2;" alt="User 4">
+        <img src="https://randomuser.me/api/portraits/men/4.jpg" class="rounded-circle border border-white" style="width: 48px; height: 48px; z-index: 1;" alt="User 5">
+      </div>
+
+      <!-- Stars and text -->
+      <div class="text-white">
+        <div class="mb-1">
+          <i class="bi bi-star-fill text-warning"></i>
+          <i class="bi bi-star-fill text-warning"></i>
+          <i class="bi bi-star-fill text-warning"></i>
+          <i class="bi bi-star-fill text-warning"></i>
+          <i class="bi bi-star-fill text-warning"></i>
         </div>
-    </section>
+        <p class="mb-1 fw-semibold">13+ glowing reviews already ⭐</p>
+        <p class="small fst-italic">Write the next <a href="https://chromewebstore.google.com/detail/promptin-ai-prompt-manage/pbfmkjjnmjfjlebpfcndpdhofoccgkje/reviews">one</a> and be part of the journey.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 
     <main>
         <section id="trusted" class="py-5 py-md-7 bg-white text-center">
@@ -385,6 +436,20 @@
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <div class="text-center p-4">
+                                <p class="lead mb-4">"Absolute genius tool.
+This was my biggest desire that someone create a tool like this.
+Thank you very much 🙌"</p>
+                                <div class="d-flex justify-content-center align-items-center gap-3">
+                                    <img src="https://randomuser.me/api/portraits/men/11.jpg" alt="Sarah Mitchell, Content Marketing Manager" class="rounded-circle" style="width: 50px; height: 50px;">
+                                    <div>
+                                        <h4 class="mb-0">Marco Röösli</h4>
+                                        <p class="small opacity-75">Technical Support Agent, Lucerne, Switzerland</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="text-center p-4">
                                 <p class="lead mb-4">"PromptIn has revolutionized how I interact with AI tools. My prompt library is now organized and reusable, saving me hours every week!"</p>
                                 <div class="d-flex justify-content-center align-items-center gap-3">
                                     <img src="https://randomuser.me/api/portraits/women/1.jpg" alt="Sarah Mitchell, Content Marketing Manager" class="rounded-circle" style="width: 50px; height: 50px;">
@@ -523,78 +588,106 @@
                         <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="7" aria-label="Slide 8"></button>
                         <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="8" aria-label="Slide 9"></button>
                         <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="9" aria-label="Slide 10"></button>
+                        <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="10" aria-label="Slide 11"></button>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="compatibility" class="py-5 py-md-7 text-center">
-            <div class="container">
-                <h2 class="display-5 fw-bold mb-5 animate__animated animate__fadeIn">Works With Your Favorite AI Platforms</h2>
-                <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3">
-                    <div class="col">
-                        <div class="card h-100 text-center fw-semibold animate__animated animate__fadeIn">
-                            <div class="card-body">ChatGPT</div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card h-100 text-center fw-semibold animate__animated animate__fadeIn">
-                            <div class="card-body">Claude</div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card h-100 text-center fw-semibold animate__animated animate__fadeIn">
-                            <div class="card-body">Gemini</div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card h-100 text-center fw-semibold animate__animated animate__fadeIn">
-                            <div class="card-body">Grok</div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card h-100 text-center fw-semibold animate__animated animate__fadeIn">
-                            <div class="card-body">GitHub Copilot</div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card h-100 text-center fw-semibold animate__animated animate__fadeIn">
-                            <div class="card-body">Microsoft Copilot</div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card h-100 text-center fw-semibold animate__animated animate__fadeIn">
-                            <div class="card-body">BlackBox</div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card h-100 text-center fw-semibold animate__animated animate__fadeIn">
-                            <div class="card-body">Mistral</div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card h-100 text-center fw-semibold animate__animated animate__fadeIn">
-                            <div class="card-body">Perplexity</div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card h-100 text-center fw-semibold animate__animated animate__fadeIn">
-                            <div class="card-body">DeepSeek</div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card h-100 text-center fw-semibold animate__animated animate__fadeIn">
-                            <div class="card-body">DuckDuckGo AI</div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card h-100 text-center fw-semibold animate__animated animate__fadeIn">
-                            <div class="card-body">Qwen AI</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <section id="compatibility" class="py-5 py-md-7 text-center bg-light">
+  <div class="container">
+    <h2 class="display-5 fw-bold mb-5 animate__animated animate__fadeIn">
+      Works With Your Favorite AI Platforms
+    </h2>
+    <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3">
+      <!-- Item Template -->
+      <div class="col">
+        <div class="card h-100 text-center fw-semibold animate__animated animate__fadeIn d-flex align-items-center justify-content-center py-3">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" alt="ChatGPT" style="width: 32px; height: 32px;" class="me-2">
+          ChatGPT
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100 text-center fw-semibold animate__animated animate__fadeIn d-flex align-items-center justify-content-center py-3">
+          <img src="Claude-ai-logo_rEZkdAn.png" alt="Claude" style="width: 32px; height: 32px;" class="me-2">
+          Claude
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100 text-center fw-semibold animate__animated animate__fadeIn d-flex align-items-center justify-content-center py-3">
+          <img src="Google-Gemini-Logo-PNG-Photo.png" alt="Gemini" style="width: 32px; height: 32px;" class="me-2">
+          Gemini
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100 text-center fw-semibold animate__animated animate__fadeIn d-flex align-items-center justify-content-center py-3">
+          <img src="grok-logo.webp" alt="Grok" style="width: 32px; height: 32px;" class="me-2 rounded">
+          Grok
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100 text-center fw-semibold animate__animated animate__fadeIn d-flex align-items-center justify-content-center py-3">
+          <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub Copilot" style="width: 32px; height: 32px;" class="me-2">
+          GitHub Copilot
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100 text-center fw-semibold animate__animated animate__fadeIn d-flex align-items-center justify-content-center py-3">
+          <img src="https://copilot.microsoft.com/favicon.ico" alt="Microsoft Copilot" style="width: 32px; height: 32px;" class="me-2">
+          Microsoft Copilot
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100 text-center fw-semibold animate__animated animate__fadeIn d-flex align-items-center justify-content-center py-3">
+          <img src="blackbox-square1-removebg-preview.png" alt="BlackBox AI" style="width: 32px; height: 32px;" class="me-2 rounded">
+          BlackBox
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100 text-center fw-semibold animate__animated animate__fadeIn d-flex align-items-center justify-content-center py-3">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Mistral_AI_logo_%282025%E2%80%93%29.svg/1200px-Mistral_AI_logo_%282025%E2%80%93%29.svg.png" alt="Mistral AI" style="width: 32px; height: 32px;" class="me-2 rounded">
+          Mistral
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100 text-center fw-semibold animate__animated animate__fadeIn d-flex align-items-center justify-content-center py-3">
+          <img src="https://www.perplexity.ai/favicon.ico" alt="Perplexity" style="width: 32px; height: 32px;" class="me-2">
+          Perplexity
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100 text-center fw-semibold animate__animated animate__fadeIn d-flex align-items-center justify-content-center py-3">
+          <img src="DeepSeek_logo.svg-removebg-preview.png" alt="DeepSeek" style="width: 40px; height: 40px;object-fit: contain;" class="me-2">
+          DeepSeek
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100 text-center fw-semibold animate__animated animate__fadeIn d-flex align-items-center justify-content-center py-3">
+          <img src="https://duckduckgo.com/favicon.ico" alt="DuckDuckGo AI" style="width: 32px; height: 32px;" class="me-2">
+          DuckDuckGo AI
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100 text-center fw-semibold animate__animated animate__fadeIn d-flex align-items-center justify-content-center py-3">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Qwen_logo.svg/1200px-Qwen_logo.svg.png" alt="Qwen AI" style="width: 32px; height: 32px;" class="me-2">
+          Qwen AI
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
         <section id="about" class="py-5 py-md-7 bg-light">
             <div class="container">
@@ -608,6 +701,7 @@
                         <div class="p-4 rounded-3 text-white" style="background: #48bb78;">
                             <h4 class="h5 mb-3">🌍 Sustainable AI Solutions</h4>
                             <p class="mb-0">AI consumes significant energy. PromptIn's optimized prompts help reduce unnecessary queries, lowering energy use and contributing to a greener future.</p>
+                            <p><i><a href="consumption.html">See why this is a problem</a></i></p>
                         </div>
                     </div>
                     <div class="col-md-6 text-center animate__animated animate__fadeIn">
@@ -622,143 +716,87 @@
                 <h2 class="display-5 fw-bold mb-3 animate__animated animate__fadeIn">Start Saving Time Today</h2>
                 <p class="lead mb-4 animate__animated animate__fadeIn">Join the AI revolution with PromptIn and transform your workflow.</p>
                 <div class="d-flex flex-column flex-md-row justify-content-center gap-3">
-                    <a href="https://chromewebstore.google.com/detail/promptin-ai-prompt-manage/pbfmkjjnmjfjlebpfcndpdhofoccgkje" class="btn btn-light text-primary rounded-pill px-4 py-2 fw-semibold animate__animated animate__fadeIn" target="_blank" rel="noopener">Download for Chrome</a>
-                    <a href="https://github.com/olivierluethy/PromptIn" class="btn btn-outline-light rounded-pill px-4 py-2 fw-semibold animate__animated animate__fadeIn" target="_blank" rel="noopener">View on GitHub</a>
-                </div>
+    <a href="https://chromewebstore.google.com/detail/promptin-ai-prompt-manage/pbfmkjjnmjfjlebpfcndpdhofoccgkje" 
+       class="btn btn-light text-primary rounded-pill px-4 py-2 fw-semibold d-flex align-items-center gap-2 animate__animated animate__fadeIn" 
+       target="_blank" rel="noopener">
+        <img src="https://cdn.jsdelivr.net/gh/alrra/browser-logos/src/chrome/chrome.svg" alt="Chrome logo" width="20" height="20">
+        Add to Chrome
+    </a>
+    
+    <a href="https://chromewebstore.google.com/detail/promptin-ai-prompt-manage/pbfmkjjnmjfjlebpfcndpdhofoccgkje" 
+       class="btn btn-light text-primary rounded-pill px-4 py-2 fw-semibold d-flex align-items-center gap-2 animate__animated animate__fadeIn" 
+       target="_blank" rel="noopener">
+        <img src="https://cdn.jsdelivr.net/gh/alrra/browser-logos/src/edge/edge.svg" alt="Edge logo" width="20" height="20">
+        Add to Edge
+    </a>
+
+    <a
+       class="btn btn-light text-primary rounded-pill px-4 py-2 fw-semibold d-flex align-items-center gap-2 animate__animated animate__fadeIn" 
+       target="_blank" rel="noopener">
+        <img src="https://cdn.jsdelivr.net/gh/alrra/browser-logos/src/firefox/firefox.svg" alt="Edge logo" width="20" height="20">
+        Add to Firefox <i><strong>Coming soon</strong></i>
+    </a>
+</div>
+
             </div>
         </section>
 
-        <footer class="bg-dark text-white text-center py-4">
-            <div class="container">
-                <p class="mb-0">© 2025 PromptIn. Created by <a href="https://github.com/olivierluethy" class="text-primary" target="_blank" rel="noopener">Olivier Lüthy</a>. Licensed under MIT License.</p>
+        <footer class="bg-dark text-light pt-5 pb-4 mt-5 border-top border-secondary">
+    <div class="container">
+        <div class="row text-center text-md-start">
+            <!-- Branding and Info -->
+            <div class="col-md-4 mb-4">
+                <h5 class="fw-bold">PromptIn</h5>
+                <p class="small">
+                    PromptIn ist eine moderne Plattform zur Verwaltung und Optimierung von AI-Prompts.
+                    Entwickelt für Profis, die das Beste aus KI herausholen wollen.
+                </p>
+                <p class="small mb-0">&copy; 2025 PromptIn. MIT License.</p>
             </div>
-        </footer>
+
+            <!-- Legal Links -->
+            <div class="col-md-4 mb-4">
+                <h6 class="fw-semibold">Rechtliches</h6>
+                <ul class="list-unstyled">
+                    <li><a href="/impressum.html" class="text-decoration-none text-light small">Impressum</a></li>
+                    <li><a href="/datenschutz" class="text-decoration-none text-light small">Datenschutzerklärung</a></li>
+                    <li><a href="/nutzungsbedingungen" class="text-decoration-none text-light small">Nutzungsbedingungen</a></li>
+                    <li><a href="/legal-notice" class="text-decoration-none text-light small">Legal Notice (EN)</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact / Social -->
+            <div class="col-md-4 mb-4">
+                <h6 class="fw-semibold">Kontakt</h6>
+                <ul class="list-unstyled small">
+                    <li>E-Mail: <a href="mailto:support@promptin.ai" class="text-decoration-none text-light">support@promptin.ai</a></li>
+                    <li><a href="https://github.com/olivierluethy/PromptIn" class="text-decoration-none text-light">GitHub Repository</a></li>
+                </ul>
+                <div class="d-flex gap-3 mt-2 justify-content-center justify-content-md-start">
+                    <a href="https://twitter.com/PromptInAI" target="_blank" class="text-light">
+                        <i class="bi bi-twitter-x fs-5"></i>
+                    </a>
+                    <a href="https://linkedin.com/company/promptin" target="_blank" class="text-light">
+                        <i class="bi bi-linkedin fs-5"></i>
+                    </a>
+                    <a href="https://promptin.ai" class="text-light">
+                        <i class="bi bi-globe fs-5"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <hr class="border-secondary my-3">
+
+        <div class="text-center small">
+            Made with ❤️ in Switzerland – Let AI work for you.
+        </div>
+    </div>
+</footer>
+
 
         <div id="notificationContainer"></div>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-        <script>
-            // Trusted Logos Slider
-            const logosContainer = document.querySelector('.trusted-logos');
-            let isPaused = false;
-
-            function startSlider() {
-                if (!isPaused) {
-                    logosContainer.style.animation = 'slide 20s linear infinite';
-                }
-            }
-
-            function pauseSlider() {
-                isPaused = true;
-                logosContainer.style.animationPlayState = 'paused';
-            }
-
-            function resumeSlider() {
-                isPaused = false;
-                logosContainer.style.animationPlayState = 'running';
-            }
-
-            logosContainer.addEventListener('mouseenter', pauseSlider);
-            logosContainer.addEventListener('mouseleave', resumeSlider);
-
-            // Auto slide testimonials
-            const testimonialCarousel = document.querySelector('#testimonialCarousel');
-            if (testimonialCarousel) {
-                const carousel = new bootstrap.Carousel(testimonialCarousel, {
-                    interval: 7000,
-                    ride: 'carousel',
-                    pause: 'hover',
-                    wrap: true
-                });
-            }
-
-            // Popup Notifications
-            const locations = [
-                "Berlin, Germany", "Austin, USA", "Zurich, Switzerland", "Tokyo, Japan", "Sydney, Australia",
-                "Toronto, Canada", "Paris, France", "Singapore", "San Francisco, USA", "London, UK",
-                "São Paulo, Brazil", "Amsterdam, Netherlands", "Dubai, UAE", "Mumbai, India", "Stockholm, Sweden",
-                "Cape Town, South Africa", "Seoul, South Korea", "Barcelona, Spain", "Hong Kong", "Melbourne, Australia"
-            ];
-
-            const advantages = [
-                "just took the first step towards a smarter workflow.",
-                "immediately downloaded it – no hesitation!",
-                "joined the movement by installing the extension.",
-                "unlocked a better browsing experience in seconds.",
-                "trusted the hype and hit download.",
-                "upgraded their productivity with one click.",
-                "decided it's time to level up and downloaded it.",
-                "just made their life a whole lot easier.",
-                "grabbed the extension like a pro.",
-                "didn’t wait — and downloaded it instantly!",
-                "knew exactly what they needed and got it.",
-                "just made the smartest click of their day.",
-                "downloaded it – and they’re not looking back.",
-                "just joined the growing community of power users.",
-                "decided to stop wasting time and took action.",
-                "jumped on the opportunity and installed it right away.",
-                "just claimed their spot in the future of productivity.",
-                "took action — because greatness doesn’t wait.",
-                "just boosted their digital game with one click.",
-                "saw the potential and made the smart move.",
-                "got ahead of the curve with this download.",
-                "kicked off a new routine with a single download.",
-                "knew better tools make better days — and downloaded.",
-                "just joined thousands optimizing their daily flow.",
-                "said goodbye to distractions — and hello to focus.",
-                "started their journey to effortless efficiency.",
-                "made a quick choice that will save hours later.",
-                "just chose ease over chaos — good call.",
-                "embraced simplicity and installed the extension.",
-                "wasted no time — they’re already upgrading.",
-                "took control of their time — starting now.",
-                "downloaded it like they meant business.",
-                "just rewired their workflow for success.",
-                "made the move that changes everything.",
-                "joined the quiet revolution — one install at a time.",
-                "tapped in — and tuned out the noise.",
-                "stepped into the fast lane with this download.",
-                "just turned their browser into a powerhouse.",
-                "took the shortcut to better habits.",
-                "proved they’re ready to work smarter."
-            ];
-
-            function showNotification() {
-                const container = document.getElementById('notificationContainer');
-                const notification = document.createElement('div');
-                notification.className = 'notification';
-                const randomLocation = locations[Math.floor(Math.random() * locations.length)];
-                const randomText = advantages[Math.floor(Math.random() * advantages.length)];
-                notification.innerHTML = `<p>Someone from ${randomLocation} ${randomText}</p>`;
-                container.appendChild(notification);
-
-                setTimeout(() => {
-                    notification.classList.add('show');
-                }, 100);
-
-                setTimeout(() => {
-                    notification.classList.remove('show');
-                    setTimeout(() => {
-                        notification.remove();
-                    }, 300);
-                }, 5000);
-            }
-
-            setTimeout(() => {
-                showNotification();
-                setInterval(showNotification, 10000);
-            }, 2000);
-
-            // Smooth scrolling
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                });
-            });
-        </script>
     </body>
 </html>
