@@ -36,7 +36,6 @@
       property="og:url"
       content="https://prompt-in.com/blog-declutter-prompts.html"
     />
-    <meta name="twitter:card" content="summary_large_image" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
       rel="stylesheet"
@@ -159,74 +158,103 @@
   </head>
   <body class="bg-light min-vh-100">
     <header class="sticky-top bg-white shadow-sm">
-      <nav
-        class="container py-3 d-flex align-items-center justify-content-between"
-      >
-        <div class="d-flex align-items-center gap-2">
+      <nav class="navbar navbar-expand-md container py-3">
+        <a
+          href="index.html"
+          class="navbar-brand d-flex align-items-center gap-2 text-dark text-decoration-none fs-4 fw-bold"
+        >
           <img
             src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/icon128-NtUw1df0Zs1WrBGTHygFOmCVae4om9.png"
             alt="PromptIn Logo"
             class="img-fluid"
             style="width: 36px; height: 36px"
           />
-          <span class="fs-4 fw-bold text-dark">PromptIn</span>
-        </div>
-        <ul class="nav d-none d-md-flex gap-3">
-          <li class="nav-item">
-            <a href="/#features" class="nav-link text-secondary fw-semibold"
-              >Features</a
-            >
-          </li>
-          <li class="nav-item">
-            <a href="/#trusted" class="nav-link text-secondary fw-semibold"
-              >Relied By</a
-            >
-          </li>
-          <li class="nav-item">
-            <a href="/#testimonials" class="nav-link text-secondary fw-semibold"
-              >Reviews</a
-            >
-          </li>
-          <li class="nav-item">
-            <a href="/#languages" class="nav-link text-secondary fw-semibold"
-              >Languages</a
-            >
-          </li>
-          <li class="nav-item">
-            <a
-              href="/#compatibility"
-              class="nav-link text-secondary fw-semibold"
-              >Compatibility</a
-            >
-          </li>
-          <li class="nav-item">
-            <a href="/#about" class="nav-link text-secondary fw-semibold"
-              >About</a
-            >
-          </li>
-          <li class="nav-item">
-            <a href="/blogs.html" class="nav-link text-secondary fw-semibold"
-              >Blog</a
-            >
-          </li>
-        </ul>
-        <a
-          href="https://chromewebstore.google.com/detail/PromptIn:%20AI%20Prompt%20Management%20System/pbfmkjjnmjfjlebpfcndpdhofoccgkje"
-          class="btn btn-primary rounded-pill px-4 fw-semibold"
-        >
-          <img
-            src="https://cdn.jsdelivr.net/gh/alrra/browser-logos/src/chrome/chrome.svg"
-            alt="Chrome logo"
-            width="20"
-            height="20"
-          />Add to Chrome /
-          <img
-            src="https://cdn.jsdelivr.net/gh/alrra/browser-logos/src/edge/edge.svg"
-            alt="Edge logo"
-            width="20"
-            height="20"
-          />Edge
+          PromptIn
         </a>
+
+        <!-- Toggler (burger) -->
+        <button
+          class="navbar-toggler border-0"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#mainNavbar"
+          aria-controls="mainNavbar"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Collapsible content -->
+        <div
+          class="collapse navbar-collapse justify-content-between"
+          id="mainNavbar"
+        >
+          <ul class="navbar-nav ms-auto gap-2">
+            <li class="nav-item">
+              <a href="/index.html#features" class="nav-link text-secondary fw-semibold"
+                >Features</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="/index.html#trusted" class="nav-link text-secondary fw-semibold"
+                >Relied By</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                href="/index.html#testimonials"
+                class="nav-link text-secondary fw-semibold"
+                >Reviews</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="/index.html#languages" class="nav-link text-secondary fw-semibold"
+                >Languages</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                href="/index.html#compatibility"
+                class="nav-link text-secondary fw-semibold"
+                >Compatibility</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="/index.html#about" class="nav-link text-secondary fw-semibold"
+                >About</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                href="/blogs.html"
+                class="nav-link text-secondary fw-semibold active"
+                >Blog</a
+              >
+            </li>
+          </ul>
+          <div class="mt-3 mt-md-0">
+            <a
+              href="https://chromewebstore.google.com/detail/PromptIn:%20AI%20Prompt%20Management%20System/pbfmkjjnmjfjlebpfcndpdhofoccgkje"
+              class="btn btn-primary rounded-pill px-4 fw-semibold d-flex align-items-center gap-2"
+            >
+              <img
+                src="https://cdn.jsdelivr.net/gh/alrra/browser-logos/src/chrome/chrome.svg"
+                alt="Chrome logo"
+                width="20"
+                height="20"
+              />
+              Add to Chrome /
+              <img
+                src="https://cdn.jsdelivr.net/gh/alrra/browser-logos/src/edge/edge.svg"
+                alt="Edge logo"
+                width="20"
+                height="20"
+              />
+              Edge
+            </a>
+          </div>
+        </div>
       </nav>
     </header>
 
@@ -436,101 +464,40 @@
       </section>
     </main>
 
-    <footer
-      class="bg-dark text-light pt-5 pb-4 mt-5 border-top border-secondary"
-    >
-      <div class="container">
-        <div class="row text-center text-md-start">
-          <div class="col-md-4 mb-4">
-            <h5 class="fw-bold">PromptIn</h5>
-            <p class="small">
-              PromptIn is a modern platform for managing and optimizing AI
-              prompts. Designed for professionals who want to get the most out
-              of AI.
-            </p>
-            <p class="small mb-0">© 2025 PromptIn. MIT License.</p>
-          </div>
-          <div class="col-md-4 mb-4">
-            <h6 class="fw-semibold">Legal</h6>
-            <ul class="list-unstyled">
-              <li>
-                <a
-                  href="/impressum.html"
-                  class="text-decoration-none text-light small"
-                  >Impressum</a
-                >
-              </li>
-              <li>
-                <a
-                  href="/datenschutz"
-                  class="text-decoration-none text-light small"
-                  >Privacy Policy</a
-                >
-              </li>
-              <li>
-                <a
-                  href="/nutzungsbedingungen"
-                  class="text-decoration-none text-light small"
-                  >Terms of Use</a
-                >
-              </li>
-              <li>
-                <a
-                  href="/legal-notice"
-                  class="text-decoration-none text-light small"
-                  >Legal Notice (EN)</a
-                >
-              </li>
-            </ul>
-          </div>
-          <div class="col-md-4 mb-4">
-            <h6 class="fw-semibold">Contact</h6>
-            <ul class="list-unstyled small">
-              <li>
-                E-Mail:
-                <a
-                  href="mailto:support@promptin.ai"
-                  class="text-decoration-none text-light"
-                  >support@promptin.ai</a
-                >
-              </li>
-              <li>
-                <a
-                  href="https://github.com/olivierluethy/PromptIn"
-                  class="text-decoration-none text-light"
-                  >GitHub Repository</a
-                >
-              </li>
-            </ul>
-            <div
-              class="d-flex gap-3 mt-2 justify-content-center justify-content-md-start"
-            >
-              <a
-                href="https://twitter.com/PromptInAI"
-                target="_blank"
-                class="text-light"
-              >
-                <i class="bi bi-twitter-x fs-5"></i>
-              </a>
-              <a
-                href="https://linkedin.com/company/promptin"
-                target="_blank"
-                class="text-light"
-              >
-                <i class="bi bi-linkedin fs-5"></i>
-              </a>
-              <a href="https://promptin.ai" class="text-light">
-                <i class="bi bi-globe fs-5"></i>
-              </a>
+    <footer class="bg-dark text-light pt-5 pb-4 mt-5 border-top border-secondary">
+            <div class="container">
+                <div class="row text-center text-md-start">
+                    <div class="col-md-4 mb-4">
+                        <h5 class="fw-bold">PromptIn</h5>
+                        <p class="small">
+                            PromptIn is a modern platform for managing and optimizing AI prompts. Developed for professionals who want to get the most out of AI.
+                        </p>
+                        <p class="small mb-0">&copy; 2025 PromptIn. MIT License.</p>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <h6 class="fw-semibold">Legal</h6>
+                        <ul class="list-unstyled">
+                            <li><a href="/privacypolicy.html" class="text-decoration-none text-light small">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <h6 class="fw-semibold">Contact</h6>
+                        <ul class="list-unstyled small">
+                            <li><a href="https://github.com/olivierluethy/PromptIn" class="text-decoration-none text-light">GitHub Repository</a></li>
+                        </ul>
+                        <div class="d-flex gap-3 mt-2 justify-content-center justify-content-md-start">
+                            <a href="https://prompt-in.com" class="text-light" rel="noopener">
+                                <i class="bi bi-globe fs-5"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <hr class="border-secondary my-3">
+                <div class="text-center small">
+                    Made with ❤️ in Switzerland – Let AI work for you.
+                </div>
             </div>
-          </div>
-        </div>
-        <hr class="border-secondary my-3" />
-        <div class="text-center small">
-          Made with ❤️ in Switzerland – Let AI work for you.
-        </div>
-      </div>
-    </footer>
+        </footer>
 
     <div id="notificationContainer"></div>
     <script
